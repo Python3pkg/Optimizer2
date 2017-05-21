@@ -16,7 +16,7 @@ args = parser.parse_args()
 
 time.sleep(args.wait * random.random())
 
-print args.x, args.y, args.wait
+print(args.x, args.y, args.wait)
 x = args.x
 y = args.y
-print 'Result:', 100.0*((y-x*x)**2.0) + (1-x)**2.0
+print('Result:', 100.0*((y-x*x)**2.0) + (1-x)**2.0)

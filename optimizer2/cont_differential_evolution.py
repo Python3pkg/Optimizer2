@@ -2,7 +2,7 @@
 #
 # All rights reserved. Distributed under GPL 3.0. For full terms see the file LICENSE.
 
-from ConfigParser import NoOptionError
+from configparser import NoOptionError
 from optimizer2.common_evolution import *
 from optimizer2.array_parser import parse_array
 
@@ -52,7 +52,7 @@ class ContDifferentialEvolutionOptimizer:
 		self.runner.run_all(parents)
 		parents.sort()
 		var = pop_variance(parents)
-		print 'Start best:', parents[0][1:], 'fit:', parents[0][0], 'parents var:', var
+		print('Start best:', parents[0][1:], 'fit:', parents[0][0], 'parents var:', var)
 
 		# Now, check the children
 		trial = 0
@@ -80,14 +80,14 @@ class ContDifferentialEvolutionOptimizer:
 				pop.sort()
 				parents = pop[:self.pop_size]
 				var = pop_variance(parents)
-				print 'Trial', trial, 'best:', parents[0][1:], 'fit:', parents[0][0], 'parents var:', var
+				print('Trial', trial, 'best:', parents[0][1:], 'fit:', parents[0][0], 'parents var:', var)
 				if var < self.min_var:
-					print 'Variance lower than minimum variance (%f). Stopping.' % self.min_var
+					print('Variance lower than minimum variance (%f). Stopping.' % self.min_var)
 					break
 				children = []
 
 			if trial >= self.max_trials - 1:
-				print 'Maximum number of trials reached. Stopping.'
+				print('Maximum number of trials reached. Stopping.')
 				break
 		self.runner.kill_all();
 		return pop

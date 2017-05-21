@@ -2,7 +2,7 @@
 #
 # All rights reserved. Distributed under GPL 3.0. For full terms see the file LICENSE.
 
-from ConfigParser import NoOptionError
+from configparser import NoOptionError
 import random
 
 from optimizer2.array_parser import parse_array
@@ -50,7 +50,7 @@ class DifferentialEvolutionOptimizer:
 		self.runner.run_all(parents)
 		parents.sort()
 		
-		print 'Start best:', parents[0][1:], 'fit:', parents[0][0]
+		print('Start best:', parents[0][1:], 'fit:', parents[0][0])
 		
 		if self.best_strategy:
 			best_idx = 0
@@ -71,11 +71,11 @@ class DifferentialEvolutionOptimizer:
 			pop.sort()
 			parents = pop[:self.pop_size]
 			var = pop_variance(parents)
-			print 'Gen', gen + 1, 'best:', parents[0][1:], 'fit:', parents[0][0], 'pop var:', var
+			print('Gen', gen + 1, 'best:', parents[0][1:], 'fit:', parents[0][0], 'pop var:', var)
 			if var < self.min_var:
-				print 'Variance lower than minimum variance (%f). Stopping.' % self.min_var
+				print('Variance lower than minimum variance (%f). Stopping.' % self.min_var)
 				break
 			if gen == self.max_gen - 1:
-				print 'Maximum generation reached. Stopping.'
+				print('Maximum generation reached. Stopping.')
 		self.runner.kill_all();
 		return pop

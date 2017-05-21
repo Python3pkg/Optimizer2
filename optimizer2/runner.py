@@ -5,7 +5,7 @@
 from subprocess import Popen, PIPE
 from optimizer2.common_evolution import *
 from optimizer2.array_parser import parse_array
-from Queue import Queue, Empty
+from queue import Queue, Empty
 from threading import Thread, Lock, Event
 from signal import SIGTERM
 
@@ -33,7 +33,7 @@ def thread_proc(in_queue, out_queue, err_queue, thread_lock, exit_event, pid_set
 
 		cmd = cmd_str.format(*pop_indiv[1:])
 		if verbose:
-			print 'Running:', cmd
+			print('Running:', cmd)
 		args = shlex.split(cmd)
 
 		thread_lock.acquire()
@@ -56,7 +56,7 @@ def thread_proc(in_queue, out_queue, err_queue, thread_lock, exit_event, pid_set
 		thread_lock.release()
 
 		if proc.returncode != 0:
-			print out
+			print(out)
 			error = "'" + cmd + "' returned a non-0 status!"
 			break
 
